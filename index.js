@@ -1,17 +1,15 @@
 const empresa = "Sistema Omma";
 console.log(`Seja bem vindo ao ${empresa}`);
 
-const listaDeReceitas = [
-  {
-    id: 1,
-    titulo: "Cachorro Quente",
-    dificuldade: "simples",
-    ingredientes: ["1 pao de leite", "1 Salsicha", "Maionese"],
-    preparo: "jodbvnujd osbvcujsbn jsbfusb",
-    link: "youtube.com",
-    vegano: false,
-  },
-];
+const listaDeReceitas = [{
+  id: 1,
+  titulo: "Cachorro Quente",
+  dificuldade: "simples",
+  ingredientes: ["1 pao de leite", "1 Salsicha", "Maionese"],
+  preparo: "jodbvnujd osbvcujsbn jsbfusb",
+  link: "youtube.com",
+  vegano: false,
+}, ];
 
 const cadastrarReceita = (
   id,
@@ -35,32 +33,6 @@ const cadastrarReceita = (
 
   console.log(`Cadastro da receita ${titulo} feito com sucesso!`);
 };
-
-// function cadastrarReceita(
-//   id,
-//   titulo,
-//   dificuldade,
-//   ingredientes,
-//   preparo,
-//   link,
-//   vegano
-// ) {
-//   const novaReceita = {
-//     id,
-//     titulo,
-//     dificuldade,
-//     ingredientes,
-//     preparo,
-//     link,
-//     vegano,
-//   };
-
-//   listaDeReceitas.push(novaReceita);
-
-//   console.log(`Cadastro da receita ${titulo} feito com sucesso!`);
-// }
-
-// console.log(listaDeReceitas[1].ingredientes);
 
 function exibirReceitas() {
   for (let index = 0; index < listaDeReceitas.length; index++) {
@@ -112,48 +84,9 @@ function deletarReceita(id) {
   console.log("receita deletada com sucesso!");
 }
 
-// function deletarReceita(id) {
-//   for (let i = 0; i < listaDeReceitas.length; i++) {
-//     if (id === listaDeReceitas[i].id) {
-//       listaDeReceitas.splice(i, 1);
-//       return console.log(`receita ${listaDeReceitas[i].titulo} deletada`);
-//     }
-//   }
-
-//   console.log("Receita não encontrada");
-// }
-
-// function somar(a, b) {
-//   return a + b;
-// }
-
-const somar = (a, b) => a + b;
-const multiplicacao = (a, b) => a * b;
-
-const calculadora = (a, b, acao) => {
-  return acao(a, b);
-};
 
 const condicaoDeReceita = (receita) => (receita.vegano = true);
 
-// const novoArray = listaDeReceitas.map(condicaoDeReceita);
-
-// const receitaNormais = listaDeReceitas.filter(
-//   (receita) => receita.vegano == true
-// );
-
-// const novoArray = [];
-// listaDeReceitas.forEach((receita) => {
-//   receita.vegano = true;
-
-//   novoArray.push(receita);
-// });
-
-function forEach(acao) {
-  for (let index = 0; index < array.length; index++) {
-    acao(array[index], index, array);
-  }
-}
 
 const atualizaReceita = (id, receitaAtualizada) => {
   let foiAtualizado = false;
@@ -175,20 +108,18 @@ const atualizaReceita = (id, receitaAtualizada) => {
   });
 
   console.log(
-    foiAtualizado
-      ? "Receita atualizada com sucesso!"
-      : "Não foi encontrado o id"
+    foiAtualizado ?
+    "Receita atualizada com sucesso!" :
+    "Não foi encontrado o id"
   );
 };
 
-"batata frita".indexOf("frita"); // 7
-"batata frita".indexOf("ovo"); // -1
 
 const buscarReceita = (termoBuscado) => {
 
   const resultados = listaDeReceitas.filter(
     (receita) =>
-      receita.titulo.toLowerCase().indexOf(termoBuscado.toLowerCase()) != -1
+    receita.titulo.toLowerCase().indexOf(termoBuscado.toLowerCase()) != -1
   );
 
   // if (resultados.length) {
@@ -203,6 +134,3 @@ const buscarReceita = (termoBuscado) => {
 
   return console.log(resultados);
 };
-
-
-buscarReceita()
