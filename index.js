@@ -34,20 +34,55 @@ const cadastrarReceita = (
   console.log(`Cadastro da receita ${titulo} feito com sucesso!`);
 };
 
+const btnEnviar = document.querySelector('#btnEnviar');
+
+btnEnviar.onclick = (evento) => {
+  //impede que a página seja recarregada / previne comportamento padrao
+evento.preventDefault();
+// alert('formulario enviado!')
+
+let inputTitulo = document.querySelector("#titulo");
+let inputDificuldade = document.querySelector("#dificuldade")
+let inputIngredientes = document.querySelector("#ingredientes")
+let inputPreparo = document.querySelector("#preparo")
+let inputLink = document.querySelector("#link")
+let inputVegano =document.querySelector('input[name="vegano"]:checked');
+
+let novaReceita = {
+  id: listaDeReceitas.length,
+  titulo: inputTitulo.value,
+  dificuldade: inputDificuldade.value,
+  ingredientes: inputIngredientes.value.split(','),
+  preparo: inputPreparo.value,
+  link: inputLink.value,
+  // vegano: inputVegano.value ? inputVegano.value
+}
+
+console.log(novaReceita)
+listaDeReceitas.push(novaReceita);
+exibirReceitas();
+}
+
+
+
+
 function exibirReceitas() {
+
+  let htmlReceitas = '';
+
+
+
   for (let index = 0; index < listaDeReceitas.length; index++) {
-    const receita = listaDeReceitas[index];
-    console.log("--------------------------------");
-    console.log("Titulo = " + receita.titulo);
-
-    for (let index = 0; index < receita.ingredientes.length; index++) {
-      const ingrediente = receita.ingredientes[index];
-      console.log("ingredientes = " + ingrediente);
-    }
-
-    console.log("É vegano? " + receita.vegano);
-    console.log("--------------------------------");
+    
+    htmlReceitas += `
+    <article class="card">
+                <h2>${listaDeReceitas[index].titulo}</h2>
+                <small>Dificuldade: ${listaDeReceitas[index].dificuldade}</small>
+                <p>${listaDeReceitas[index].preparo}</p>
+            </article>`;
   }
+ let painelReceitas = document.querySelector(".painel-receitas");
+  painelReceitas.innerHTML = htmlReceitas;
 }
 
 // exibirReceitas();
